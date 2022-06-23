@@ -112,6 +112,7 @@ jobs:
 
       - name: Push Dev Docker Images
         run: |
+          ls -laR airbyte-workers/build/docker
           VERSION=${{ needs.generate-tags.outputs.dev_tag }}
           VERSION=$VERSION GIT_REVISION=$GIT_REVISION docker buildx bake -f docker-compose-cloud.build.yaml --push
         shell: bash
