@@ -15,36 +15,36 @@ services:
         platforms:
           - linux/amd64
           - linux/arm64
-  webapp:
-    image: airbyte/webapp:${VERSION}
-    build:
-      dockerfile: Dockerfile
-      context: airbyte-webapp/build/docker
-      labels:
-        io.airbyte.git-revision: ${GIT_REVISION}
-      x-bake:
-        platforms:
-          - linux/amd64
-          - linux/arm64
-  metric-reporter:
-    image: airbyte/metrics-reporter:${VERSION}
-    build:
-      dockerfile: Dockerfile
-      context: airbyte-metrics/reporter/build/docker
-      labels:
-        io.airbyte.git-revision: ${GIT_REVISION}
-      x-bake:
-        platforms:
-          - linux/amd64
-          - linux/arm64
-  container-orchestrator:
-    image: airbyte/container-orchestrator:${VERSION}
-    build:
-      dockerfile: Dockerfile
-      context: airbyte-container-orchestrator/build/docker
-      labels:
-        io.airbyte.git-revision: ${GIT_REVISION}
-      x-bake:
-        platforms:
-          - linux/amd64
-          - linux/arm64
+#  webapp:
+#    image: airbyte/webapp:${VERSION}
+#    build:
+#      dockerfile: Dockerfile
+#      context: airbyte-webapp/build/docker
+#      labels:
+#        io.airbyte.git-revision: ${GIT_REVISION}
+#      x-bake:
+#        platforms:
+#          - linux/amd64
+#          - linux/arm64
+#  metric-reporter:
+#    image: airbyte/metrics-reporter:${VERSION}
+#    build:
+#      dockerfile: Dockerfile
+#      context: airbyte-metrics/reporter/build/docker
+#      labels:
+#        io.airbyte.git-revision: ${GIT_REVISION}
+#      x-bake:
+#        platforms:
+#          - linux/amd64
+#          - linux/arm64
+#  container-orchestrator:
+#    image: airbyte/container-orchestrator:${VERSION}
+#    build:
+#      dockerfile: Dockerfile
+#      context: airbyte-container-orchestrator/build/docker
+#      labels:
+#        io.airbyte.git-revision: ${GIT_REVISION}
+#      x-bake:
+#        platforms:
+#          - linux/amd64
+#          - linux/arm64
