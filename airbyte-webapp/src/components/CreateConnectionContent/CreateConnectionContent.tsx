@@ -11,7 +11,7 @@ import LoadingSchema from "components/LoadingSchema";
 
 import { LogsRequestError } from "core/request/LogsRequestError";
 import { useCreateConnection, ValuesProps } from "hooks/services/useConnectionHook";
-import { LegacyTrackActionType, TrackActionActions, TrackActionNamespace, useTrackAction } from "hooks/useTrackAction";
+import { TrackActionLegacyType, TrackActionType, TrackActionNamespace, useTrackAction } from "hooks/useTrackAction";
 import ConnectionForm from "views/Connection/ConnectionForm";
 import { FormikConnectionFormValues } from "views/Connection/ConnectionForm/formConfig";
 
@@ -51,7 +51,7 @@ const CreateConnectionContent: React.FC<CreateConnectionContentProps> = ({
   const { mutateAsync: createConnection } = useCreateConnection();
   const trackNewConnectionAction = useTrackAction(
     TrackActionNamespace.CONNECTION,
-    LegacyTrackActionType.NEW_CONNECTION
+    TrackActionLegacyType.NEW_CONNECTION
   );
 
   const { schema, isLoading, schemaErrorStatus, catalogId, onDiscoverSchema } = useDiscoverSchema(source.sourceId);
@@ -99,7 +99,7 @@ const CreateConnectionContent: React.FC<CreateConnectionContentProps> = ({
     const enabledStreams = connection.syncCatalog.streams.filter((stream) => stream.config?.selected).length;
 
     if (item) {
-      trackNewConnectionAction("Select a frequency", TrackActionActions.FREQUENCY, {
+      trackNewConnectionAction("Select a frequency", TrackActionType.FREQUENCY, {
         frequency: item.label,
         connector_source_definition: source?.sourceName,
         connector_source_definition_id: source?.sourceDefinitionId,
