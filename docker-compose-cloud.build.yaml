@@ -8,7 +8,7 @@ services:
     image: airbyte/worker:${VERSION}
     build:
       dockerfile: Dockerfile
-      context: airbyte-workers
+      context: airbyte-workers/build/docker
       labels:
         io.airbyte.git-revision: ${GIT_REVISION}
       x-bake:
@@ -19,7 +19,7 @@ services:
     image: airbyte/webapp:${VERSION}
     build:
       dockerfile: Dockerfile
-      context: airbyte-webapp
+      context: airbyte-webapp/build/docker
       labels:
         io.airbyte.git-revision: ${GIT_REVISION}
       x-bake:
@@ -30,7 +30,7 @@ services:
     image: airbyte/metrics-reporter:${VERSION}
     build:
       dockerfile: Dockerfile
-      context: airbyte-metrics/reporter
+      context: airbyte-metrics/reporter/build/docker
       labels:
         io.airbyte.git-revision: ${GIT_REVISION}
       x-bake:
@@ -41,7 +41,7 @@ services:
     image: airbyte/container-orchestrator:${VERSION}
     build:
       dockerfile: Dockerfile
-      context: airbyte-container-orchestrator
+      context: airbyte-container-orchestrator/build/docker
       labels:
         io.airbyte.git-revision: ${GIT_REVISION}
       x-bake:
